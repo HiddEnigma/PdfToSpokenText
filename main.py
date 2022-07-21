@@ -3,7 +3,6 @@ from tkinter.filedialog import askopenfilename
 from PyPDF2 import PdfReader
 
 import pyttsx3 as tts
-import pdfplumber as pdfplumber
 import os
 
 Tk().withdraw()
