@@ -1,8 +1,8 @@
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
-from gtts import gTTS
 from PyPDF2 import PdfReader
 
+import pyttsx3 as tts
 import pdfplumber as pdfplumber
 import os
 
@@ -24,5 +24,8 @@ all_text = ""
 for page in reader.pages:
     all_text += page.extract_text()
 
-tts = gTTS(text=all_text, lang="en")
-tts.save(f"{name[0]}.mp3")
+engine = tts.init()
+
+engine.setProperty("rate", 150)
+engine.save_to_file(all_text, f"{name[0]}.mp3")
+engine.runAndWait()
